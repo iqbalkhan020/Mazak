@@ -1,148 +1,176 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Free Car Wash</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            background-color: white;
-            
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Play Video and Download</title>
+  <style>
+    body {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+    }
 
-        #form-container {
-            max-width: 600px;
-            width: 90%;
-            padding: 20px;
-            box-sizing: border-box;
-            background-color: #fff;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            border-radius: 8px;
-            text-align: center;
-            box-shadow: 2px 2px 2px 5px rgb(241, 236, 236);
-            border: 1px solid red;
-        }
+    button {
+      padding: 15px;
+      font-size: 16px;
+      cursor: pointer;
+    }
 
-        h1 {
-            font-size: 28px;
-            font-weight: bold;
-            margin-bottom: 20px;
-        }
+    #video-container {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: black;
+      z-index: 1;
+    }
 
-        label {
-            display: block;
-            margin-bottom: 8px;
-        }
-
-        input {
-            width: 100%;
-            padding: 8px;
-            margin-bottom: 16px;
-            box-sizing: border-box;
-            box-shadow: 2px 2px lightgrey;
-            transition: 1s ease-in-out;
-        }
+    #video {
+      width: 100%;
+      height: 100%;
+    }
 
 
-        input:hover {
-            border: 1px solid red;
-            background-color: black;
-            color: white;
-        }
-
-        .button {
-  padding: 10px 15px;
-  font-size: 24px;
-  text-align: center;
-  cursor: pointer;
-  outline: none;
+    .custom-btn {
+  width: 130px;
+  height: 40px;
   color: #fff;
-  background-color: #04AA6D;
-  border: none;
-  border-radius: 15px;
-  box-shadow: 0 9px #999;
+  border-radius: 5px;
+  padding: 10px 25px;
+  font-family: 'Lato', sans-serif;
+  font-weight: 500;
+  background: transparent;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  display: inline-block;
+   box-shadow:inset 2px 2px 2px 0px rgba(255,255,255,.5),
+   7px 7px 20px 0px rgba(0,0,0,.1),
+   4px 4px 5px 0px rgba(0,0,0,.1);
+  outline: none;
 }
 
-.button:hover {background-color: #3e8e41}
-
-.button:active {
-  background-color: #3e8e41;
-  box-shadow: 0 5px #666;
-  transform: translateY(4px);
+.btn-12{
+  position: relative;
+  right: 20px;
+  bottom: 20px;
+  border:none;
+  box-shadow: none;
+  width: 130px;
+  height: 40px;
+  line-height: 42px;
+  -webkit-perspective: 230px;
+  perspective: 230px;
+}
+.btn-12 span {
+  background: rgb(0,172,238);
+background: linear-gradient(0deg, rgba(0,172,238,1) 0%, rgba(2,126,251,1) 100%);
+  display: block;
+  position: absolute;
+  width: 130px;
+  height: 40px;
+  box-shadow:inset 2px 2px 2px 0px rgba(255,255,255,.5),
+   7px 7px 20px 0px rgba(0,0,0,.1),
+   4px 4px 5px 0px rgba(0,0,0,.1);
+  border-radius: 5px;
+  margin:0;
+  text-align: center;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  -webkit-transition: all .3s;
+  transition: all .3s;
+}
+.btn-12 span:nth-child(1) {
+  box-shadow:
+   -7px -7px 20px 0px #fff9,
+   -4px -4px 5px 0px #fff9,
+   7px 7px 20px 0px #0002,
+   4px 4px 5px 0px #0001;
+  -webkit-transform: rotateX(90deg);
+  -moz-transform: rotateX(90deg);
+  transform: rotateX(90deg);
+  -webkit-transform-origin: 50% 50% -20px;
+  -moz-transform-origin: 50% 50% -20px;
+  transform-origin: 50% 50% -20px;
+}
+.btn-12 span:nth-child(2) {
+  -webkit-transform: rotateX(0deg);
+  -moz-transform: rotateX(0deg);
+  transform: rotateX(0deg);
+  -webkit-transform-origin: 50% 50% -20px;
+  -moz-transform-origin: 50% 50% -20px;
+  transform-origin: 50% 50% -20px;
+}
+.btn-12:hover span:nth-child(1) {
+  box-shadow:inset 2px 2px 2px 0px rgba(255,255,255,.5),
+   7px 7px 20px 0px rgba(0,0,0,.1),
+   4px 4px 5px 0px rgba(0,0,0,.1);
+  -webkit-transform: rotateX(0deg);
+  -moz-transform: rotateX(0deg);
+  transform: rotateX(0deg);
+}
+.btn-12:hover span:nth-child(2) {
+  box-shadow:inset 2px 2px 2px 0px rgba(255,255,255,.5),
+   7px 7px 20px 0px rgba(0,0,0,.1),
+   4px 4px 5px 0px rgba(0,0,0,.1);
+ color: transparent;
+  -webkit-transform: rotateX(-90deg);
+  -moz-transform: rotateX(-90deg);
+  transform: rotateX(-90deg);
 }
 
-        #message {
-            margin-top: 20px;
-            display: none;
-            text-align: center;
-        }
 
-        video {
-            margin-top: 20px;
-            width: 100%;
-            max-height: 200px;
-        }
-
-        .Happy {
-            font-size: 30px;
-            color: blue;
-        }
-    </style>
+  </style>
 </head>
 <body>
-    <div id="form-container">
-        <h1>Free Car Wash</h1>
-        <form id="carWashForm">
-            <label for="fullName">Full Name:</label>
-            <input type="text" id="fullName" name="fullName" required>
 
-            <label for="email">Email Address:</label>
-            <input type="email" id="email" name="email" required>
+  <button class="custom-btn btn-12" onclick="playVideoAndDownload()"><span>Click here buddy!</span><span>My Friends</span></button>
 
-            <button class="button" type="button" onclick="submitForm()">Submit</button>
-        </form>
+  <div id="video-container">
+    <video id="video" controls onended="downloadTextFile()">
+      <source src="laughing.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+  </div>
 
-        <div id="message">
-            <p>Your name is recorded in Google Sheets.<br>Please contact group admin Imran Bhai<br><br>
-                <span class="Happy">Happy New Year</b></span>
-            </p>
-        </div>
+  <script>
+    function playVideoAndDownload() {
+      var videoContainer = document.getElementById('video-container');
+      var video = document.getElementById('video');
 
-        <video id="video" style="display: none;" controls>
-            <source src="laughing.mp4" type="video/mp4">
-            Your browser does not support the video tag.
-        </video>
+      // Display the video container
+      videoContainer.style.display = 'block';
 
-    </div>
+      // Play the video
+      video.play();
 
-    <script>
-        function submitForm() {
-            // Validate form
-            var fullName = document.getElementById('fullName').value;
-            var email = document.getElementById('email').value;
+      // Download the text file
+      downloadTextFile();
+    }
 
-            if (fullName.trim() === '' || email.trim() === '') {
-                alert('Please fill in both Full Name and Email Address.');
-                return;
-            }
+    function downloadTextFile() {
+      // Create a Blob with an empty text file
+      var blob = new Blob([''], { type: 'text/plain' });
 
-            // Simulate Google Sheets recording (using Google Forms for simplicity)
-            // You should replace this with actual server-side code to interact with Google Sheets
-            document.getElementById('message').style.display = 'block';
+      // Create a link element and trigger a download
+      var link = document.createElement('a');
+      link.href = window.URL.createObjectURL(blob);
+      link.download = 'Warning.txt';
 
-            // Display and play the video after 2 seconds
-            setTimeout(function () {
-                document.getElementById('video').style.display = 'block';
-                document.getElementById('video').play();
-            }, 2000);
-        }
-    </script>
+      // Append the link to the body and trigger the click event
+      document.body.appendChild(link);
+      link.click();
+
+      // Remove the link from the body
+      document.body.removeChild(link);
+    }
+  </script>
+
 </body>
 </html>
